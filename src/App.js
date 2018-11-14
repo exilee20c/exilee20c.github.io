@@ -12,27 +12,32 @@ const HeaderWrap = styled.header`
   width: 100%;
   top: 0;
   left: 0;
+  transition: background-color 0.5s ease;
 
   a {
     color: inherit;
     text-decoration: none;
   }
 
-  &:top-docked {
+  &.top-docked {
   }
-  &:top-floating {
+  &.top-floating {
+    background-color: #37474f;
   }
 `;
 
 function logEvent() {
-  this.setState({ is_scroll_top: !!window.scrollY });
+  if (window.scrollY) {
+    this.headerRef.current.classList.remove("top-docked");
+    this.headerRef.current.classList.add("top-floating");
+  } else {
+    this.headerRef.current.classList.remove("top-floating");
+    this.headerRef.current.classList.add("top-docked");
+  }
 }
 
 class ExileeWebApp extends Component {
-  state = {
-    is_scroll_top: true
-  };
-
+  headerRef = React.createRef();
   logEvent = logEvent.bind(this);
 
   componentDidMount() {
@@ -48,9 +53,7 @@ class ExileeWebApp extends Component {
       <Router>
         <Fragment>
           {/* START::HEADER_CONTENT */}
-          <HeaderWrap
-            className={this.state.is_scroll_top ? "top-floating" : "top-docked"}
-          >
+          <HeaderWrap ref={this.headerRef} className="top-docked">
             <HeaderContent maxWidth={BODY_WIDTH} />
           </HeaderWrap>
           {/* E N D::HEADER_CONTENT */}
