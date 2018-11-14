@@ -127,6 +127,54 @@ class LandingPage extends Component {
               </li>
             </ul>
           </div>
+
+          <hr />
+
+          <div>
+            <h6 className="kr-text">무엇을 다룰수 있나요?</h6>
+            <ul>
+              <li>
+                <i className="fab fa-java" />
+                <p className="en-text">Since. 2013-01-01, Java 7</p>
+              </li>
+              <li>
+                <i className="fas fa-database" />
+                <p className="en-text">MS-SQL, Oracle, MySQL</p>
+              </li>
+              <li>
+                <i className="fab fa-react" />
+                <p className="en-text">Since. 2017-02-01</p>
+              </li>
+              <li>
+                <i className="fab fa-npm" />
+                <p className="en-text">Own 2 Packages</p>
+              </li>
+            </ul>
+          </div>
+
+          <hr />
+
+          <div>
+            <h6 className="kr-text">무엇을 다룰수 있나요?</h6>
+            <ul>
+              <li>
+                <i className="fab fa-java" />
+                <p className="en-text">Since. 2013-01-01, Java 7</p>
+              </li>
+              <li>
+                <i className="fas fa-database" />
+                <p className="en-text">MS-SQL, Oracle, MySQL</p>
+              </li>
+              <li>
+                <i className="fab fa-react" />
+                <p className="en-text">Since. 2017-02-01</p>
+              </li>
+              <li>
+                <i className="fab fa-npm" />
+                <p className="en-text">Own 2 Packages</p>
+              </li>
+            </ul>
+          </div>
         </LandingWrapper>
       </Fragment>
     );

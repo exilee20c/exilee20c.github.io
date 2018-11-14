@@ -10,6 +10,7 @@ const HeaderWrap = styled.header`
   background-color: #263238;
   position: fixed;
   width: 100%;
+  z-index: 100;
   top: 0;
   left: 0;
   transition: background-color 0.5s ease;
