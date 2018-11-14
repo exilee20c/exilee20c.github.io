@@ -1,69 +1,67 @@
-import React from "react";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import React, { Component, Fragment } from "react";
+import { BrowserRouter as Router } from "react-router-dom";
+import styled from "styled-components";
 
-const Home = () => (
-  <div>
-    <h2>Home</h2>
-  </div>
-);
+import HeaderContent from "./HeaderContent";
+import RoutingBody from "./RoutingBody";
 
-const About = () => (
-  <div>
-    <h2>About</h2>
-  </div>
-);
+const BODY_WIDTH = "1024px";
+const HeaderWrap = styled.header`
+  background-color: #263238;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
 
-const Topic = ({ match }) => (
-  <div>
-    <h3>{match.params.topicId}</h3>
-  </div>
-);
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
 
-const Topics = ({ match }) => (
-  <div>
-    <h2>Topics</h2>
-    <ul>
-      <li>
-        <Link to={`${match.url}/rendering`}>Rendering with React</Link>
-      </li>
-      <li>
-        <Link to={`${match.url}/components`}>Components</Link>
-      </li>
-      <li>
-        <Link to={`${match.url}/props-v-state`}>Props v. State</Link>
-      </li>
-    </ul>
+  &:top-docked {
+  }
+  &:top-floating {
+  }
+`;
 
-    <Route path={`${match.path}/:topicId`} component={Topic} />
-    <Route
-      exact
-      path={match.path}
-      render={() => <h3>Please select a topic.</h3>}
-    />
-  </div>
-);
+function logEvent() {
+  this.setState({ is_scroll_top: !!window.scrollY });
+}
 
-const BasicExample = () => (
-  <Router>
-    <div>
-      <ul>
-        <li>
-          <Link to="/">Home</Link>
-        </li>
-        <li>
-          <Link to="/about">About</Link>
-        </li>
-        <li>
-          <Link to="/topics">Topics</Link>
-        </li>
-      </ul>
+class ExileeWebApp extends Component {
+  state = {
+    is_scroll_top: true
+  };
 
-      <hr />
+  logEvent = logEvent.bind(this);
 
-      <Route exact path="/" component={Home} />
-      <Route path="/about" component={About} />
-      <Route path="/topics" component={Topics} />
-    </div>
-  </Router>
-);
-export default BasicExample;
+  componentDidMount() {
+    window.addEventListener("scroll", this.logEvent);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("scroll", this.logEvent);
+  }
+
+  render() {
+    return (
+      <Router>
+        <Fragment>
+          {/* START::HEADER_CONTENT */}
+          <HeaderWrap
+            className={this.state.is_scroll_top ? "top-floating" : "top-docked"}
+          >
+            <HeaderContent maxWidth={BODY_WIDTH} />
+          </HeaderWrap>
+          {/* E N D::HEADER_CONTENT */}
+
+          {/* START::ROUTING_BODY_HOC */}
+          <RoutingBody maxWidth={BODY_WIDTH} />
+          {/* E N D::ROUTING_BODY_HOC */}
+        </Fragment>
+      </Router>
+    );
+  }
+}
+
+export default ExileeWebApp;
