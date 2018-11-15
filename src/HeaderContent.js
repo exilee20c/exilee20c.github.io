@@ -64,17 +64,17 @@ class HeaderContent extends Component {
             exilee20c
           </Link>
         </LogoTitle>
-        <NavStack>
+        {/* <NavStack>
           <NavButton>
             <Link to="curriculum-vitae">curriculum vitae</Link>
           </NavButton>
           <NavButton>
-            <Link to="the-untitleds">the untitleds</Link>
+            <Link to="side-projects">side projects</Link>
           </NavButton>
           <NavButton>
-            <Link to="mirror-dimension">mirror dimension</Link>
+            <Link to="copy-and-paste">copy and paste</Link>
           </NavButton>
-        </NavStack>
+        </NavStack> */}
       </HeaderWrap>
     );
   }

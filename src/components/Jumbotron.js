@@ -4,7 +4,7 @@ import styled, { keyframes } from "styled-components";
 
 const JumbotronContent = styled.div`
   background-color: #263238;
-  height: 300px;
+  height: 210px;
   position: relative;
 `;
 
@@ -71,7 +71,7 @@ const JumbotronEssence = styled.div`
 
   div {
     max-width: 1024px;
-    margin-top: 80px;
+    margin-top: 40px;
     margin-left: auto;
     margin-right: auto;
     text-align: center;
@@ -146,8 +146,13 @@ class Jumbotron extends Component {
   }
 
   initCanvas() {
-    this.setState({ is_inited: false }, () =>
-      window.setTimeout(() => this.setState({ is_inited: true }), 1000)
+    this.setState(
+      { is_inited: false },
+      () =>
+        (this.initTimeoutId = window.setTimeout(
+          () => this.setState({ is_inited: true }),
+          1000
+        ))
     );
     if (this.animationId) {
       window.cancelAnimationFrame(this.animationId);
@@ -162,6 +167,7 @@ class Jumbotron extends Component {
 
     window.requestAnimationFrame(() => this.draw(ctx));
   }
+
   draw(ctx) {
     const { canvas } = ctx;
     const { clientWidth, clientHeight } = canvas;
@@ -176,6 +182,10 @@ class Jumbotron extends Component {
     window.removeEventListener("resize", this.matchCanvasSize);
     window.removeEventListener("resize", this.initCanvas);
     window.cancelAnimationFrame(this.animationId);
+
+    if (this.initTimeoutId) {
+      window.clearTimeout(this.initTimeoutId);
+    }
   }
 
   render() {

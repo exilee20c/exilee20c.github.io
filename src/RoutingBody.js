@@ -6,8 +6,8 @@ import { withLandingFooter } from "./withLandingFooter";
 import LandingPage from "./LandingPage";
 import CurriculumVitae from "./CurriculumVitae";
 
-const TheUntitleds = () => <div>the-untitleds</div>;
-const MirrorDimension = () => <div>mirror-dimension</div>;
+const SideProjects = () => <div>side-projects</div>;
+const CopyAndPaste = () => <div>copy-and-paste</div>;
 
 class RoutingBody extends Component {
   render() {
@@ -23,12 +23,12 @@ class RoutingBody extends Component {
           component={withFooter(CurriculumVitae, this.props.maxWidth)}
         />
         <Route
-          path="/the-untitleds"
-          component={withMain(TheUntitleds, this.props.maxWidth)}
+          path="/side-projects"
+          component={withMain(SideProjects, this.props.maxWidth)}
         />
         <Route
-          path="/mirror-dimension"
-          component={withMain(MirrorDimension, this.props.maxWidth)}
+          path="/copy-and-paste"
+          component={withMain(CopyAndPaste, this.props.maxWidth)}
         />
       </Fragment>
     );

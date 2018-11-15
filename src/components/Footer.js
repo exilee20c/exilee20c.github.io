@@ -4,6 +4,7 @@ import styled, { keyframes } from "styled-components";
 const FooterWrap = styled.footer`
   color: #ffffff;
   background-color: #000000;
+  overflow: hidden;
 `;
 
 const FooterContent = styled.div`
@@ -22,6 +23,13 @@ const Belonging = styled.div`
 
 const ContactList = styled.ul`
   text-align: center;
+`;
+
+const ContactHeader = styled.li`
+  display: inline-block;
+  font-family: "Ubuntu Mono", monospace;
+  padding-right: 12px;
+  border-right: 1px solid #ffffff;
 `;
 
 const fadeIn = keyframes`
@@ -109,10 +117,46 @@ const ListItemWithTooltip = styled.li`
       }
 
       input {
+        padding: 0;
+        margin: 0;
+        border: 0;
+        width: 100px;
+        font-size: 13px;
+        font-family: "Ubuntu Mono", monospace;
+        cursor: pointer;
+
+        ::selection {
+          color: inherit;
+          background-color: inherit;
+        }
       }
 
-      > i {
+      > i.far.fa-copy {
         margin-left: 0.5em;
+        transition: color 0.5s ease;
+
+        &.just-copied {
+          transition: color 0.15s ease;
+          color: #4dd0e1;
+
+          & + span {
+            opacity: 1;
+            transition: opacity 0.15s ease;
+          }
+        }
+
+        & + span {
+          font-family: "Nanum Gothic Coding", monospace;
+          margin-left: 0.5em;
+          font-size: 13px;
+          color: #4dd0e1;
+          display: inline-block;
+          width: 0;
+          overflow: visibie;
+          white-space: nowrap;
+          opacity: 0;
+          transition: opacity 0.5s ease;
+        }
       }
     }
   }
@@ -129,6 +173,16 @@ const TooltipHolder = ({ className, value, alt, copy }) => {
             if (hidden_input && typeof hidden_input.select === "function") {
               hidden_input.select();
               document.execCommand("copy");
+              document
+                .getElementById(`fa_${copy_id}`)
+                .classList.add("just-copied");
+              window.setTimeout(
+                () =>
+                  document
+                    .getElementById(`fa_${copy_id}`)
+                    .classList.remove("just-copied"),
+                600
+              );
             }
           }}
         >
@@ -137,7 +191,7 @@ const TooltipHolder = ({ className, value, alt, copy }) => {
       )
     : value
       ? ({ children }) => (
-          <a href={value} rel="noopener noreferrer">
+          <a href={value} rel="noopener noreferrer" target="_blank">
             {children}
           </a>
         )
@@ -154,7 +208,8 @@ const TooltipHolder = ({ className, value, alt, copy }) => {
             ) : (
               alt || value
             )}
-            {copy && <i className="far fa-copy" />}
+            {copy && <i id={`fa_${copy_id}`} className="far fa-copy" />}
+            {copy && <span>복사됨</span>}
           </div>
         </div>
       </Wrapper>
@@ -168,6 +223,7 @@ class Footer extends Component {
       <FooterWrap>
         <FooterContent maxWidth={this.props.maxWidth}>
           <ContactList>
+            <ContactHeader>CONTACT ME</ContactHeader>
             <TooltipHolder
               className="fas fa-phone"
               copy
