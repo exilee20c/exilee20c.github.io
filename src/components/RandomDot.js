@@ -7,7 +7,7 @@
 export default function RandomDot(ctx) {
   const { canvas } = ctx;
   const { clientWidth: width, clientHeight: height } = canvas;
-  const R = parseInt(Math.random() * 3 + 1);
+  const R = parseInt((Math.random() * 10 + 11) / 10) / 2;
 
   this.x = parseInt(Math.random() * (width - 2 * R) + R);
   this.y = parseInt(Math.random() * (height - 2 * R) + R);
@@ -28,7 +28,7 @@ export default function RandomDot(ctx) {
       this.a_ascending = false;
     }
 
-    if (!this.a_ascending && this.a < 0) {
+    if (!this.a_ascending && this.a < 0.5) {
       this.a_ascending = true;
     }
 
