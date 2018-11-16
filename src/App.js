@@ -6,8 +6,9 @@ import HeaderContent from "./HeaderContent";
 import RoutingBody from "./RoutingBody";
 
 const BODY_WIDTH = "1024px";
+
 const HeaderWrap = styled.header`
-  background-color: #263238;
+  background-color: rgba(0, 0, 0, 0);
   position: fixed;
   width: 100%;
   z-index: 100;
@@ -20,14 +21,12 @@ const HeaderWrap = styled.header`
     text-decoration: none;
   }
 
-  &.top-docked {
-  }
   &.top-floating {
-    background-color: #37474f;
+    background-color: rgba(0, 0, 0, 0.8);
   }
 `;
 
-function logEvent() {
+function scrollHandler() {
   if (window.scrollY) {
     this.headerRef.current.classList.remove("top-docked");
     this.headerRef.current.classList.add("top-floating");
@@ -39,14 +38,14 @@ function logEvent() {
 
 class ExileeWebApp extends Component {
   headerRef = React.createRef();
-  logEvent = logEvent.bind(this);
+  scrollHandler = scrollHandler.bind(this);
 
   componentDidMount() {
-    window.addEventListener("scroll", this.logEvent);
+    window.addEventListener("scroll", this.scrollHandler);
   }
 
   componentWillUnmount() {
-    window.removeEventListener("scroll", this.logEvent);
+    window.removeEventListener("scroll", this.scrollHandler);
   }
 
   render() {
@@ -59,9 +58,7 @@ class ExileeWebApp extends Component {
           </HeaderWrap>
           {/* E N D::HEADER_CONTENT */}
 
-          {/* START::ROUTING_BODY_HOC */}
           <RoutingBody maxWidth={BODY_WIDTH} />
-          {/* E N D::ROUTING_BODY_HOC */}
         </Fragment>
       </Router>
     );

@@ -2,29 +2,6 @@ import React, { Component } from "react";
 import RandomDot from "./RandomDot";
 import styled, { keyframes } from "styled-components";
 
-const JumbotronContent = styled.div`
-  background-color: #263238;
-  height: 210px;
-  position: relative;
-`;
-
-const Canvas = styled.canvas`
-  transition: opacity 1s ease;
-  position: absolute;
-  z-index: 0;
-  top: 0;
-  left: 0;
-
-  &.initiating {
-    opacity: 0;
-    transition: opacity 0.5s ease-in-out;
-  }
-
-  &.initiated {
-    opacity: 1;
-  }
-`;
-
 const h6Move = keyframes`
   0% {
     margin-left: -10vw;
@@ -61,62 +38,139 @@ const blockquoteMove = keyframes`
   }
 `;
 
-const JumbotronEssence = styled.div`
-  position: absolute;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+const primaryWaveMove = keyframes`
+  0% {
+    width: 50%;
+    opacity: 1;
+  }
 
-  div {
-    max-width: 1024px;
-    margin-top: 40px;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
+  100% {
+    width: 150%;
+    opacity: 0;
+  }
+`;
 
-    h6 {
-      font-family: "Nanum Gothic Coding", monospace;
-      font-size: 16px;
-      color: #ffffff;
-      text-shadow: 1px 1px 3px black;
+const secondaryWaveMove = keyframes`
+  0% {
+    width: 50%;
+    opacity: 1;
+  }
 
-      margin-left: -10vw;
+  100% {
+    width: 250%;
+    opacity: 0;
+  }
+`;
+
+const JumbotronContent = styled.div`
+  background-color: #000000;
+  height: 210px;
+  position: relative;
+
+  canvas.jumbotron-canvas {
+    transition: opacity 1s ease;
+    position: absolute;
+    z-index: 0;
+    top: 0;
+    left: 0;
+
+    &.initiating {
       opacity: 0;
-      animation: ${h6Move} 1s ease-in forwards;
+      transition: opacity 0.5s ease-in-out;
     }
 
-    h3 {
-      font-family: "Nanum Gothic Coding", monospace;
-      font-size: 36px;
-      margin-top: 20px;
-      margin-bottom: 20px;
-      color: #ffffff;
-      text-shadow: 1px 1px 3px black;
-      white-space: nowrap;
-
-      margin-left: 10vw;
-      opacity: 0;
-      animation: ${h3Move} 1s 1s ease-in forwards;
+    &.initiated {
+      opacity: 1;
     }
+  }
 
-    blockquote {
-      font-family: "Nanum Gothic Coding", monospace;
-      font-size: 12px;
-      color: #ffffff;
-      text-shadow: 1px 1px 3px black;
+  div.jumbotron-copy-wrap {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 
-      margin-top: 50px;
-      opacity: 0;
-      animation: ${blockquoteMove} 2s 3s ease-in forwards;
+    div.jumbotron-copy-content {
+      max-width: 1024px;
+      margin-top: 60px;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
 
-      cite {
-        &:before {
-          content: "-";
-          padding: 0 4px;
+      h6 {
+        font-family: "Nanum Gothic Coding", monospace;
+        font-size: 16px;
+        color: #ffffff;
+        text-shadow: 1px 1px 3px black;
+
+        margin-left: -10vw;
+        opacity: 0;
+        animation: ${h6Move} 1s ease-in forwards;
+      }
+
+      h3 {
+        font-family: "Nanum Gothic Coding", monospace;
+        font-size: 36px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        color: #ffffff;
+        text-shadow: 1px 1px 3px black;
+        white-space: nowrap;
+
+        margin-left: 10vw;
+        opacity: 0;
+        animation: ${h3Move} 1s 1s ease-in forwards;
+      }
+
+      blockquote {
+        font-family: "Nanum Gothic Coding", monospace;
+        font-size: 12px;
+        color: #ffffff;
+        text-shadow: 1px 1px 3px black;
+
+        margin-top: 50px;
+        opacity: 0;
+        animation: ${blockquoteMove} 2s 3s ease-in forwards;
+
+        cite {
+          &:before {
+            content: "-";
+            padding: 0 4px;
+          }
         }
       }
+    }
+  }
+
+  div.wave-wrap {
+    position: absolute;
+    overflow: hidden;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    div.primary-wave {
+      position: absolute;
+      transform: skewX(20deg);
+      background-color: rgba(255, 255, 255, 0.5);
+      width: 50%;
+      height: 100%;
+      margin-left: -50%;
+      animation: ${primaryWaveMove} 2s ease-in forwards;
+    }
+
+    div.secondary-wave {
+      position: absolute;
+      transform: skewX(-20deg);
+      background-color: rgba(255, 255, 255, 0.5);
+      width: 50%;
+      height: 100%;
+      margin-left: -70%;
+      animation: ${secondaryWaveMove} 2s 1s ease-in forwards;
     }
   }
 `;
@@ -161,7 +215,7 @@ class Jumbotron extends Component {
     const canvas = this.canvasRef.current;
     const ctx = canvas.getContext("2d");
     this.circleArray = [];
-    for (let i = 0; i < parseInt(canvas.clientWidth / 10); i++) {
+    for (let i = 0; i < parseInt(canvas.clientWidth / 2); i++) {
       this.circleArray.push(new RandomDot(ctx));
     }
 
@@ -191,14 +245,18 @@ class Jumbotron extends Component {
   render() {
     return (
       <JumbotronContent ref={this.wrapperRef}>
-        <Canvas
-          className={this.state.is_inited ? "initiated" : "initiating"}
+        <canvas
+          id="jumbotron"
+          className={`jumbotron-canvas${
+            this.state.is_inited ? " initiated" : " initiating"
+          }`}
           width="1024"
-          height="300"
+          height="210"
           ref={this.canvasRef}
         />
-        <JumbotronEssence>
-          <div>
+
+        <div className="jumbotron-copy-wrap">
+          <div className="jumbotron-copy-content">
             <h6>어떤 과제건, 검색해서라도 구현해내는</h6>
             <h3>프론트엔드 개발자</h3>
             <blockquote>
@@ -206,7 +264,12 @@ class Jumbotron extends Component {
               <cite>박인혁</cite>
             </blockquote>
           </div>
-        </JumbotronEssence>
+        </div>
+
+        <div className="wave-wrap">
+          <div className="primary-wave" />
+          <div className="secondary-wave" />
+        </div>
       </JumbotronContent>
     );
   }

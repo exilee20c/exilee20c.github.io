@@ -28,14 +28,14 @@ export default function RandomDot(ctx) {
       this.a_ascending = false;
     }
 
-    if (!this.a_ascending && this.a < 0.5) {
+    if (!this.a_ascending && this.a < 0) {
       this.a_ascending = true;
     }
 
     if (this.a_ascending) {
-      this.a += 0.01;
+      this.a += 0.02;
     } else {
-      this.a -= 0.01;
+      this.a -= 0.02;
     }
   };
   return { paint: this.paint.bind(this) };

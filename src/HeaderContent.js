@@ -1,9 +1,5 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import styled from "styled-components";
-
-const LOGO_HEIGHT = "32px";
-const NAV_HEIGHT = "16px";
 
 const HeaderWrap = styled.div`
   max-width: ${props => props.maxWidth};
@@ -17,7 +13,7 @@ const Color = styled.span`
 
 const LogoTitle = styled.h1`
   font-family: "Ubuntu Mono", monospace;
-  font-size: ${LOGO_HEIGHT};
+  font-size: 16px;
   color: #ffffff;
   vertical-align: middle;
   display: inline-block;
@@ -34,13 +30,13 @@ const LogoTitle = styled.h1`
 
 const NavStack = styled.ul`
   font-family: "Nanum Gothic Coding", monospace;
-  font-size: ${NAV_HEIGHT};
+  font-size: 16px;
   color: #ffffff;
   display: inline-block;
 `;
 
 const NavButton = styled.li`
-  line-height: ${LOGO_HEIGHT};
+  line-height: 16px;
   vertical-align: middle;
   display: inline-block;
 
@@ -59,22 +55,25 @@ class HeaderContent extends Component {
     return (
       <HeaderWrap maxWidth={this.props.maxWidth}>
         <LogoTitle>
-          <Link to="/">
+          <a href="#jumbotron">
             *<Color value="#e53935">@</Color>
             exilee20c
-          </Link>
+          </a>
         </LogoTitle>
-        {/* <NavStack>
+        <NavStack>
           <NavButton>
-            <Link to="curriculum-vitae">curriculum vitae</Link>
+            <a href="#curriculum-vitae">curriculum vitae</a>
           </NavButton>
           <NavButton>
+            <a href="#introduce">introduce</a>
+          </NavButton>
+          {/* <NavButton>
             <Link to="side-projects">side projects</Link>
           </NavButton>
           <NavButton>
             <Link to="copy-and-paste">copy and paste</Link>
-          </NavButton>
-        </NavStack> */}
+          </NavButton> */}
+        </NavStack>
       </HeaderWrap>
     );
   }

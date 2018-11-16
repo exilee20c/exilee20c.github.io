@@ -2,8 +2,10 @@ import React, { Component } from "react";
 import styled from "styled-components";
 
 const MainWrapper = styled.main`
-  margin-top: 40px;
-  padding-bottom: 16px;
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
 `;
 
 function withLandingMain(SectionComponent) {
