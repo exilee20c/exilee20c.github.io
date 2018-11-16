@@ -30,6 +30,13 @@ const ContactHeader = styled.li`
   font-family: "Ubuntu Mono", monospace;
   padding-right: 12px;
   border-right: 1px solid #ffffff;
+
+  @media (max-width: 425px) {
+    display: block;
+    padding-right: 0;
+    padding-bottom: 12px;
+    border-right: 0;
+  }
 `;
 
 const fadeIn = keyframes`

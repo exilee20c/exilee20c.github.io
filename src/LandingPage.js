@@ -19,23 +19,28 @@ const LandingWrapper = styled.div`
       font-family: "Ubuntu Mono", monospace;
     }
 
-    &.left,
-    &.right {
-      width: calc(50% - 25px);
-
-      p {
-        font-size: 13px;
-        line-height: 2;
-        text-align: left;
-      }
-    }
-
     &.left {
       float: left;
     }
 
     &.right {
       float: right;
+    }
+
+    &.left,
+    &.right {
+      width: calc(50% - 25px);
+
+      @media (max-width: 1024px) {
+        width: 100%;
+        float: unset;
+      }
+
+      p {
+        font-size: 13px;
+        line-height: 2;
+        text-align: left;
+      }
     }
 
     h6 {
@@ -84,6 +89,30 @@ const LandingWrapper = styled.div`
           margin-top: 6px;
           font-size: 12px;
         }
+
+        @media (max-width: 1024px) {
+          display: block;
+          width: auto;
+          height: 28px;
+          text-align: left;
+
+          & + li {
+            margin-top: 24px;
+          }
+
+          i {
+            font-size: 28px;
+            vertical-align: middle;
+          }
+
+          p {
+            margin-top: 0;
+            margin-left: 12px;
+            font-size: 20px;
+            vertical-align: middle;
+            display: inline-block;
+          }
+        }
       }
     }
   }
@@ -104,6 +133,20 @@ const LandingWrapper = styled.div`
 
 const FloatingWrapper = styled.div`
   overflow: auto;
+
+  hr {
+    display: none;
+  }
+
+  @media (max-width: 1024px) {
+    width: calc(100% - 10vw);
+    margin-left: auto;
+    margin-right: auto;
+
+    hr {
+      display: block;
+    }
+  }
 `;
 
 class LandingPage extends Component {
@@ -112,27 +155,29 @@ class LandingPage extends Component {
       <Fragment>
         <Jumbotron maxWidth={this.props.maxWidth} />
         <LandingWrapper maxWidth={this.props.maxWidth}>
-          <div>
-            <h6 className="kr-text">무엇을 다룰수 있나요?</h6>
-            <ul>
-              <li>
-                <i className="fab fa-java" />
-                <p className="en-text">Since. 2013-01-01, Java 7</p>
-              </li>
-              <li>
-                <i className="fas fa-database" />
-                <p className="en-text">MS-SQL, Oracle, MySQL</p>
-              </li>
-              <li>
-                <i className="fab fa-react" />
-                <p className="en-text">Since. 2017-02-01</p>
-              </li>
-              <li>
-                <i className="fab fa-npm" />
-                <p className="en-text">Own 2 Packages</p>
-              </li>
-            </ul>
-          </div>
+          <FloatingWrapper>
+            <div>
+              <h6 className="kr-text">무엇을 다룰수 있나요?</h6>
+              <ul>
+                <li>
+                  <i className="fab fa-java" />
+                  <p className="en-text">Since. 2013-01-01, Java 7</p>
+                </li>
+                <li>
+                  <i className="fas fa-database" />
+                  <p className="en-text">MS-SQL, Oracle, MySQL</p>
+                </li>
+                <li>
+                  <i className="fab fa-react" />
+                  <p className="en-text">Since. 2017-02-01</p>
+                </li>
+                <li>
+                  <i className="fab fa-npm" />
+                  <p className="en-text">Own 2 Packages</p>
+                </li>
+              </ul>
+            </div>
+          </FloatingWrapper>
 
           <hr />
 
@@ -153,6 +198,8 @@ class LandingPage extends Component {
                 요청이 들어오기를 기다리게 됐습니다.
               </p>
             </div>
+
+            <hr />
 
             <div className="right">
               <h6 className="kr-text">
@@ -193,6 +240,8 @@ class LandingPage extends Component {
               </p>
             </div>
 
+            <hr />
+
             <div className="right">
               <h6 className="kr-text">서비스 정신</h6>
               <p className="kr-text">
@@ -224,6 +273,8 @@ class LandingPage extends Component {
                 가장 좋은 학습방법은 누군가를 가르쳐주는 것이라고 생각합니다.
               </p>
             </div>
+
+            <hr />
 
             <div className="right">
               <h6 className="kr-text">정보처리산업기사</h6>
