@@ -132,7 +132,7 @@ const LandingWrapper = styled.div`
 `;
 
 const FloatingWrapper = styled.div`
-  overflow: auto;
+  overflow: hidden;
 
   hr {
     display: none;
