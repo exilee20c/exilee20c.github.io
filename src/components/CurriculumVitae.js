@@ -19,13 +19,13 @@ const CurriculumWrap = styled.section`
           font-size: 10px;
           display: inline-block;
           padding: 2px 6px;
-          background-color: #cccccc;
+          background-color: #666666;
           color: #ffffff;
         }
       }
 
       div.time-wrap {
-        background-color: #cccccc;
+        background-color: #666666;
         color: #ffffff;
         padding: 1px 6px;
         font-size: 12px;
@@ -73,6 +73,22 @@ const CurriculumWrap = styled.section`
                 display: none;
               }
             }
+          }
+        }
+      }
+
+      div.project-wrap {
+        margin-left: 12px;
+
+        p.title {
+          display: block;
+          margin-top: 18px;
+          margin-bottom: 12px;
+        }
+
+        ul.project-list {
+          li + li {
+            margin-top: 12px;
           }
         }
       }
@@ -131,9 +147,43 @@ const CAREER_INFO = {
   list: [
     {
       title: "유니버셜리얼타임(주) 근무",
-      desc: "Java 7, Spring Framework, Oracle, jQuery, 시스템 통합 프로젝트",
+      desc: "Java 7, Spring Framework, Oracle, jQuery, 솔루션, SI",
       from: "2013년 01월 01일",
-      to: "2013년 12월 28일"
+      to: "2013년 12월 28일",
+      project: [
+        {
+          title: "수자원공사 발전통합운영체계",
+          desc: "Java 7, Spring Framework, Oracle, jQuery, 백오피스",
+          from: "2013년 01월 01일",
+          to: "2013년 05월 31일"
+        },
+        {
+          title: "현대해상 실시간 모니터링",
+          desc: "Java 7, Spring Framework, Oracle, jQuery, 백오피스",
+          from: "2013년 06월 01일",
+          to: "2013년 12월 27일"
+        }
+      ]
+    },
+    {
+      title: "(주)에이치알인트로 근무",
+      desc: "Java 7, Spring Framework, Oracle, MySQL, jQuery, 솔루션, SI",
+      from: "2016년 08월 08일",
+      to: "2017년 01월 20일",
+      project: [
+        {
+          title: "데이터베이스 마이그레이션",
+          desc: "자사 솔루션 Oracle --> MySQL ",
+          from: "2016년 09월 05일",
+          to: "2016년 09월 23일"
+        },
+        {
+          title: "고속철도 전용망 유심칩관리체계",
+          desc: "Java 7, Spring Framework, MySQL, jQuery, 백오피스",
+          from: "2016년 09월 26일",
+          to: "2016년 12월 27일"
+        }
+      ]
     }
   ]
 };
@@ -157,6 +207,32 @@ function parseCategory(json_data) {
               {item.from && <time className="time-from">{item.from}</time>}
               {item.to && <time className="time-to">{item.to}</time>}
             </div>
+
+            {item.project && (
+              <div className="project-wrap">
+                <p className="title">프로젝트 경력</p>
+                <ul className="project-list">
+                  {item.project.map(project => (
+                    <li>
+                      <p>
+                        {project.title}
+                        {project.desc && <span>{project.desc}</span>}
+                      </p>
+
+                      <div className="time-wrap">
+                        <i className="far fa-calendar-alt" />
+                        {project.from && (
+                          <time className="time-from">{project.from}</time>
+                        )}
+                        {project.to && (
+                          <time className="time-to">{project.to}</time>
+                        )}
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
           </li>
         ))}
       </ul>

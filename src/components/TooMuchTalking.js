@@ -42,6 +42,7 @@ const IntroduceWrap = styled.section`
         font-size: 13px;
         line-height: 2;
         text-align: left;
+        text-indent: 0.5em;
       }
     }
   }
@@ -72,9 +73,7 @@ class LandingPage extends Component {
           <hr />
 
           <div className="right">
-            <h6 className="kr-text">
-              (리액트) => {"{ return 프론트엔드 개발자; }"}
-            </h6>
+            <h6 className="kr-text">리액트 => 프론트엔드 개발자</h6>
             <p className="kr-text">
               프론트엔드 개발 붐이 일어나고, 관련 직군의 채용도 확대되자 가장
               재밌게 생각했던 화면단 개발에 좀더 집중하고 싶은 생각에 이직을
