@@ -21,6 +21,17 @@ const CurriculumWrap = styled.section`
           padding: 2px 6px;
           background-color: #666666;
           color: #ffffff;
+
+          @media (max-width: 1024px) {
+            display: block;
+            margin-left: 0;
+            margin-top: 6px;
+          }
+        }
+
+        @media (max-width: 768px) {
+          width: 100%;
+          margin-bottom: -1px;
         }
       }
 
@@ -33,6 +44,15 @@ const CurriculumWrap = styled.section`
         display: inline-block;
         float: right;
         overflow: hidden;
+
+        @media (max-width: 768px) {
+          float: unset;
+          display: block;
+          width: 100%;
+          font-size: 10px;
+          padding-top: 4px;
+          padding-bottom: 2px;
+        }
 
         i {
           display: inline-block;
@@ -48,6 +68,11 @@ const CurriculumWrap = styled.section`
           &.time-to {
             width: 112px;
             float: right;
+
+            @media (max-width: 768px) {
+              float: unset;
+              width: auto;
+            }
 
             &:before {
               content: "~";
@@ -69,9 +94,18 @@ const CurriculumWrap = styled.section`
 
             & + .time-to {
               width: 100px;
+
+              @media (max-width: 768px) {
+                width: auto;
+              }
+
               &:before {
                 display: none;
               }
+            }
+
+            @media (max-width: 768px) {
+              width: auto;
             }
           }
         }
@@ -285,7 +319,7 @@ function parseCategory(json_data) {
                 </p>
                 <ul className="project-list">
                   {item.project.map(project => (
-                    <li>
+                    <li key={project.title}>
                       <p>
                         {project.title}
                         {project.desc && <span>{project.desc}</span>}
