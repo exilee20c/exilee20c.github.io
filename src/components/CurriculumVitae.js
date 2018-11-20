@@ -84,11 +84,37 @@ const CurriculumWrap = styled.section`
           display: block;
           margin-top: 18px;
           margin-bottom: 12px;
+
+          span {
+            margin-left: 0;
+            font-size: 12px;
+            display: inline-block;
+            background-color: #bababa;
+          }
+
+          &:after {
+            content: "";
+            width: calc(100% - 90px);
+            height: 1px;
+            display: inline-block;
+            background-color: #bababa;
+            vertical-align: bottom;
+          }
         }
 
         ul.project-list {
-          li + li {
-            margin-top: 12px;
+          li {
+            span {
+              background-color: #bababa;
+            }
+
+            div.time-wrap {
+              background-color: #bababa;
+            }
+
+            & + li {
+              margin-top: 12px;
+            }
           }
         }
       }
@@ -96,7 +122,7 @@ const CurriculumWrap = styled.section`
       & + li.content-item {
         margin-top: 12px;
         padding-top: 12px;
-        border-top: 1px solid #cccccc;
+        border-top: 1px solid #666666;
       }
     }
   }
@@ -184,6 +210,24 @@ const CAREER_INFO = {
           to: "2016년 12월 27일"
         }
       ]
+    },
+    {
+      title: "(주)컬쳐크래프트 근무",
+      desc: "웹 프론트엔드 개발, 리액트, 서비스 개발 및 운영",
+      from: "2017년 02월 01일",
+      project: [
+        {
+          title: "모코비 백오피스 개발 및 서비스 운영",
+          desc: "php 기반 REST API, 리액트",
+          from: "2017년 02월 01일",
+          to: "2018년 03월 22일"
+        },
+        {
+          title: "빈플레이트 서비스 및 백오피스 개발",
+          desc: "php 기반 REST API, 리액트",
+          from: "2017년 06월 19일"
+        }
+      ]
     }
   ]
 };
@@ -210,7 +254,9 @@ function parseCategory(json_data) {
 
             {item.project && (
               <div className="project-wrap">
-                <p className="title">프로젝트 경력</p>
+                <p className="title">
+                  <span>프로젝트 경력</span>
+                </p>
                 <ul className="project-list">
                   {item.project.map(project => (
                     <li>
