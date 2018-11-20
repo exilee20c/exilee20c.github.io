@@ -8,6 +8,6 @@ ReactDOM.render(<App />, document.getElementById("exilee-root"));
 
 if (window._exilee_map && window._exilee_map.is_service_worker_works) {
   registerServiceWorker();
+} else {
+  unregister();
 }
-
-unregister();
