@@ -2,7 +2,12 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
-import { register as registerServiceWorker } from "./serviceWorker";
+import { register as registerServiceWorker, unregister } from "./serviceWorker";
 
 ReactDOM.render(<App />, document.getElementById("exilee-root"));
-registerServiceWorker();
+
+if (window._exilee_map && window._exilee_map.is_service_worker_works) {
+  registerServiceWorker();
+}
+
+unregister();
