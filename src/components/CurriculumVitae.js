@@ -192,6 +192,32 @@ const CAREER_INFO = {
       ]
     },
     {
+      title: "공무원 임용준비",
+      desc: "첫 IT기업에서의 악조건 경험후 안정적인 직장 추구",
+      from: "2014년 01월 01일",
+      to: "2015년 02월 14일"
+    },
+    {
+      title: "카페에서 바리스타로 근무",
+      desc: "휴게음식점",
+      from: "2015년 03월 30일",
+      to: "2015년 09월 30일"
+    },
+    {
+      title: "경영기술개발원 교육센터 36기 수료",
+      desc: "스프링 프레임웍, 자바 웹 개발, 사물인터넷, 빅데이터",
+      from: "2015년 12월 26일",
+      to: "2016년 06월 27일",
+      project: [
+        {
+          title: "팀프로젝트 쉐어위",
+          desc: "Java 7, Spring Framework, Oracle, jQuery",
+          from: "2016년 03월 14일",
+          to: "2016년 05월 20일"
+        }
+      ]
+    },
+    {
       title: "(주)에이치알인트로 근무",
       desc: "Java 7, Spring Framework, Oracle, MySQL, jQuery, 솔루션, SI",
       from: "2016년 08월 08일",
@@ -199,7 +225,7 @@ const CAREER_INFO = {
       project: [
         {
           title: "데이터베이스 마이그레이션",
-          desc: "자사 솔루션 Oracle --> MySQL ",
+          desc: "자사 솔루션 Oracle --> MySQL",
           from: "2016년 09월 05일",
           to: "2016년 09월 23일"
         },
