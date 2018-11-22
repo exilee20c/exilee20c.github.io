@@ -202,6 +202,16 @@ const LISENCE_INFO = {
   ]
 };
 
+const ACADEMY_INFO = {
+  title: "교육사항",
+  list: [
+    {
+      title: "정보처리산업기사",
+      from: "2017년 05월 29일"
+    }
+  ]
+};
+
 const CAREER_INFO = {
   title: "경력사항",
   list: [
@@ -348,17 +358,19 @@ function parseCategory(json_data) {
 
 class LandingPage extends Component {
   render() {
-    const EduInfo = parseCategory(EDU_INFO);
-    const DutyInfo = parseCategory(DUTY_INFO);
-    const LisenceInfo = parseCategory(LISENCE_INFO);
     const CareerInfo = parseCategory(CAREER_INFO);
+    const EduInfo = parseCategory(EDU_INFO);
+    const LisenceInfo = parseCategory(LISENCE_INFO);
+    const AcademyInfo = parseCategory(ACADEMY_INFO);
+    const DutyInfo = parseCategory(DUTY_INFO);
 
     return (
       <CurriculumWrap id="curriculum-vitae">
-        <EduInfo />
-        <DutyInfo />
-        <LisenceInfo />
         <CareerInfo />
+        <EduInfo />
+        <LisenceInfo />
+        <AcademyInfo />
+        <DutyInfo />
       </CurriculumWrap>
     );
   }
