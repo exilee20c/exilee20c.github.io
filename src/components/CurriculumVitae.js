@@ -192,29 +192,15 @@ const DUTY_INFO = {
   ]
 };
 
-const LISENCE_INFO = {
-  title: "자격사항",
-  list: [
-    {
-      title: "정보처리산업기사",
-      from: "2017년 05월 29일"
-    }
-  ]
-};
-
-const ACADEMY_INFO = {
-  title: "교육사항",
-  list: [
-    {
-      title: "정보처리산업기사",
-      from: "2017년 05월 29일"
-    }
-  ]
-};
-
 const CAREER_INFO = {
   title: "경력사항",
   list: [
+    {
+      title: "청년취업아카데미수료",
+      desc: "교육사항 : 자바기반안드로이드앱컨텐츠개발자과정",
+      from: "2012년 07월 25일",
+      to: "2012년 11월 16일"
+    },
     {
       title: "유니버셜리얼타임(주) 근무",
       desc: "Java 7, Spring Framework, Oracle, jQuery, 솔루션, SI",
@@ -248,18 +234,10 @@ const CAREER_INFO = {
       to: "2015년 09월 30일"
     },
     {
-      title: "경영기술개발원 교육센터 36기 수료",
-      desc: "스프링 프레임웍, 자바 웹 개발, 사물인터넷, 빅데이터",
-      from: "2015년 12월 26일",
-      to: "2016년 06월 27일",
-      project: [
-        {
-          title: "팀프로젝트 쉐어위",
-          desc: "Java 7, Spring Framework, Oracle, jQuery",
-          from: "2016년 03월 14일",
-          to: "2016년 05월 20일"
-        }
-      ]
+      title: "국비지원교육이수",
+      desc: "교육사항 : 스마트웹앱콘텐츠전문가 교육과정",
+      from: "2015년 12월 28일",
+      to: "2016년 06월 27일"
     },
     {
       title: "(주)에이치알인트로 근무",
@@ -296,6 +274,42 @@ const CAREER_INFO = {
           title: "빈플레이트 서비스 및 백오피스 개발",
           desc: "php 기반 REST API, 리액트",
           from: "2017년 06월 19일"
+        }
+      ]
+    }
+  ]
+};
+
+const LISENCE_INFO = {
+  title: "자격사항",
+  list: [
+    {
+      title: "정보처리산업기사",
+      from: "2017년 05월 29일"
+    }
+  ]
+};
+
+const ACADEMY_INFO = {
+  title: "교육사항",
+  list: [
+    {
+      title: "자바기반안드로이드앱컨텐츠개발자과정",
+      desc: "스프링 프레임웍, 자바 웹 개발, 안드로이드",
+      from: "2012년 07월 25일",
+      to: "2012년 11월 16일"
+    },
+    {
+      title: "스마트웹앱콘텐츠전문가 교육과정",
+      desc: "스프링 프레임웍, 자바 웹 개발, 사물인터넷, 빅데이터",
+      from: "2015년 12월 28일",
+      to: "2016년 06월 27일",
+      project: [
+        {
+          title: "팀프로젝트 쉐어위",
+          desc: "Java 7, Spring Framework, Oracle, jQuery",
+          from: "2016년 03월 14일",
+          to: "2016년 05월 20일"
         }
       ]
     }
@@ -358,19 +372,19 @@ function parseCategory(json_data) {
 
 class LandingPage extends Component {
   render() {
-    const CareerInfo = parseCategory(CAREER_INFO);
     const EduInfo = parseCategory(EDU_INFO);
-    const LisenceInfo = parseCategory(LISENCE_INFO);
-    const AcademyInfo = parseCategory(ACADEMY_INFO);
     const DutyInfo = parseCategory(DUTY_INFO);
+    const AcademyInfo = parseCategory(ACADEMY_INFO);
+    const CareerInfo = parseCategory(CAREER_INFO);
+    const LisenceInfo = parseCategory(LISENCE_INFO);
 
     return (
       <CurriculumWrap id="curriculum-vitae">
-        <CareerInfo />
         <EduInfo />
-        <LisenceInfo />
-        <AcademyInfo />
         <DutyInfo />
+        <AcademyInfo />
+        <CareerInfo />
+        <LisenceInfo />
       </CurriculumWrap>
     );
   }
