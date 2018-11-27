@@ -1,9 +1,9 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import { BrowserRouter as Router } from "react-router-dom";
 import styled from "styled-components";
-
 import HeaderContent from "./HeaderContent";
 import RoutingBody from "./RoutingBody";
+import Scrollable from "hide-scrollbar-react";
 
 const BODY_WIDTH = "1024px";
 
@@ -51,7 +51,7 @@ class ExileeWebApp extends Component {
   render() {
     return (
       <Router>
-        <Fragment>
+        <Scrollable>
           {/* START::HEADER_CONTENT */}
           <HeaderWrap ref={this.headerRef} className="top-docked">
             <HeaderContent maxWidth={BODY_WIDTH} />
@@ -59,7 +59,7 @@ class ExileeWebApp extends Component {
           {/* E N D::HEADER_CONTENT */}
 
           <RoutingBody maxWidth={BODY_WIDTH} />
-        </Fragment>
+        </Scrollable>
       </Router>
     );
   }
