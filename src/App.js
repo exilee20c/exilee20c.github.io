@@ -27,12 +27,14 @@ const HeaderWrap = styled.header`
 `;
 
 function scrollHandler() {
-  if (window.scrollY) {
-    this.headerRef.current.classList.remove("top-docked");
-    this.headerRef.current.classList.add("top-floating");
-  } else {
-    this.headerRef.current.classList.remove("top-floating");
-    this.headerRef.current.classList.add("top-docked");
+  if (document.querySelector('.exl-scrollable-container')) {
+    if (document.querySelector('.exl-scrollable-container').scrollTop) {
+      this.headerRef.current.classList.remove("top-docked");
+      this.headerRef.current.classList.add("top-floating");
+    } else {
+      this.headerRef.current.classList.remove("top-floating");
+      this.headerRef.current.classList.add("top-docked");
+    }
   }
 }
 
@@ -41,11 +43,11 @@ class ExileeWebApp extends Component {
   scrollHandler = scrollHandler.bind(this);
 
   componentDidMount() {
-    window.addEventListener("scroll", this.scrollHandler);
+    document.querySelector('.exl-scrollable-container') && document.querySelector('.exl-scrollable-container').addEventListener("scroll", this.scrollHandler);
   }
 
   componentWillUnmount() {
-    window.removeEventListener("scroll", this.scrollHandler);
+    document.querySelector('.exl-scrollable-container') && document.querySelector('.exl-scrollable-container').removeEventListener("scroll", this.scrollHandler);
   }
 
   render() {
