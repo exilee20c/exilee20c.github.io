@@ -1,9 +1,10 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { BrowserRouter as Router } from "react-router-dom";
 import styled from "styled-components";
 import HeaderContent from "./HeaderContent";
 import RoutingBody from "./RoutingBody";
 import Scrollable from "hide-scrollbar-react";
+import MemoDocker from "./components/MemoDocker";
 
 const BODY_WIDTH = "1024px";
 
@@ -27,8 +28,8 @@ const HeaderWrap = styled.header`
 `;
 
 function scrollHandler() {
-  if (document.querySelector('.exl-scrollable-container')) {
-    if (document.querySelector('.exl-scrollable-container').scrollTop) {
+  if (document.querySelector(".exl-scrollable-container")) {
+    if (document.querySelector(".exl-scrollable-container").scrollTop) {
       this.headerRef.current.classList.remove("top-docked");
       this.headerRef.current.classList.add("top-floating");
     } else {
@@ -43,25 +44,34 @@ class ExileeWebApp extends Component {
   scrollHandler = scrollHandler.bind(this);
 
   componentDidMount() {
-    document.querySelector('.exl-scrollable-container') && document.querySelector('.exl-scrollable-container').addEventListener("scroll", this.scrollHandler);
+    document.querySelector(".exl-scrollable-container") &&
+      document
+        .querySelector(".exl-scrollable-container")
+        .addEventListener("scroll", this.scrollHandler);
   }
 
   componentWillUnmount() {
-    document.querySelector('.exl-scrollable-container') && document.querySelector('.exl-scrollable-container').removeEventListener("scroll", this.scrollHandler);
+    document.querySelector(".exl-scrollable-container") &&
+      document
+        .querySelector(".exl-scrollable-container")
+        .removeEventListener("scroll", this.scrollHandler);
   }
 
   render() {
     return (
       <Router>
-        <Scrollable>
-          {/* START::HEADER_CONTENT */}
-          <HeaderWrap ref={this.headerRef} className="top-docked">
-            <HeaderContent maxWidth={BODY_WIDTH} />
-          </HeaderWrap>
-          {/* E N D::HEADER_CONTENT */}
+        <Fragment>
+          <Scrollable>
+            {/* START::HEADER_CONTENT */}
+            <HeaderWrap ref={this.headerRef} className="top-docked">
+              <HeaderContent maxWidth={BODY_WIDTH} />
+            </HeaderWrap>
+            {/* E N D::HEADER_CONTENT */}
 
-          <RoutingBody maxWidth={BODY_WIDTH} />
-        </Scrollable>
+            <RoutingBody maxWidth={BODY_WIDTH} />
+          </Scrollable>
+          <MemoDocker title="localStorage(&quot;TODO&quot;)@exilee20c" />
+        </Fragment>
       </Router>
     );
   }
