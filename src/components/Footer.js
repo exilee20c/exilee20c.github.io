@@ -255,11 +255,6 @@ class Footer extends Component {
               value="https://www.instagram.com/exilee20c"
               alt="@exilee20c • Instagram"
             />
-            <TooltipHolder
-              className="fab fa-google-plus"
-              value="https://plus.google.com/108896043419447344345"
-              alt="exilee20c - Google+"
-            />
           </ContactList>
 
           <Belonging>
