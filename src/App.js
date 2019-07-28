@@ -4,7 +4,6 @@ import styled from "styled-components";
 import HeaderContent from "./HeaderContent";
 import RoutingBody from "./RoutingBody";
 import Scrollable from "hide-scrollbar-react";
-import MemoDocker from "todo-docker-react";
 
 const BODY_WIDTH = "1024px";
 
@@ -70,7 +69,6 @@ class ExileeWebApp extends Component {
 
             <RoutingBody maxWidth={BODY_WIDTH} />
           </Scrollable>
-          <MemoDocker title="Notepad" />
         </Fragment>
       </Router>
     );
