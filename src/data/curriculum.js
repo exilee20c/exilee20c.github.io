@@ -115,6 +115,23 @@ module.exports = {
             to: "2018년 12월 07일"
           }
         ]
+      },
+      {
+        title: "(주)마이셀럽스 근무중",
+        desc: "ReactJS 백오피스툴 개발, VueJS 서비스 페이지 개발",
+        from: "2018년 12월 26일",
+        project: [
+          {
+            title: "백오피스 개발 및 유지보수",
+            desc: "HTTP REST API통신, ReactJS",
+            from: "2018년 12월 31일"
+          },
+          {
+            title: "스타프로필 웹페이지 개선",
+            desc: "Nuxt, VueJS 사용",
+            from: "2019년 05월 29일"
+          }
+        ]
       }
     ]
   },
