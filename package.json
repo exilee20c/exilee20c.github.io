@@ -1,6 +1,6 @@
 {
   "name": "exilee20c.github.io",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.9",
@@ -9,6 +9,7 @@
     "@fortawesome/react-fontawesome": "^0.1.3",
     "hide-scrollbar-react": "^1.1.5",
     "i": "^0.3.6",
+    "node-sass": "^4.12.0",
     "npm": "^6.4.1",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
